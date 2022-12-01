@@ -16,7 +16,8 @@ podTemplate(yaml: '''
     def proxies=''
     stage('Checkout') {
       echo 'printenv'
-      checkout scm: [$class: 'GitSCM', userRemoteConfigs: [[url: 'https://github.com/sebdet/oran-deployment.git']], branches: [[name: env.BRANCH]], extensions: [[$class: 'SubmoduleOption', recursiveSubmodules: true]]], poll: false
+      git branch: 'main', url: 'https://github.com/ast9501/oran-deployment.git'
+      //checkout scm: [$class: 'GitSCM', userRemoteConfigs: [[url: 'https://github.com/sebdet/oran-deployment.git']], branches: [[name: env.BRANCH]], extensions: [[$class: 'SubmoduleOption', recursiveSubmodules: true]]], poll: false
     }
       container('jenkins-ubuntu') {
         stage ('Proxy settings') {
